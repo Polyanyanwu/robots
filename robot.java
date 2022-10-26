@@ -6,9 +6,19 @@ class robot{
 
   private static String navigateMars(String gridSize, String movement){
     // Get the maximum x and y size of the grid and convert to integer
-    String[] xyMax = gridSize.split("x");
-    int xMax = Integer.parseInt(xyMax[0]);
-    int yMax = Integer.parseInt(xyMax[1]);
+    // incase user inputs wrong string use default 5x5
+    
+    int xMax = 5;
+    int yMax = 5;
+    try {
+      String[] xyMax = gridSize.split("x");
+      xMax= Integer.parseInt(xyMax[0]);
+      yMax = Integer.parseInt(xyMax[1]);
+    } catch (Exception e) {
+      // ignore wrong input and use the default 5x5
+      e.getMessage();
+    }
+
 
     // Starting position of the Robot
     int xCoordinate = 1;
